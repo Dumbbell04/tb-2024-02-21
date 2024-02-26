@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 class App {
     Scanner in = new Scanner(System.in);
-
+    String[] 명언등록 = new String[100];
+    String[] 작가등록 = new String[100];
 
     void run() {
         int wisenum = 0;
@@ -19,15 +20,22 @@ class App {
                 wisenum++;
 
                 System.out.print("명언 : ");
-                String 명언등록 = in.nextLine();
+                명언등록[wisenum] = in.nextLine();
                 System.out.print("작가 : ");
-                String 작가등록 = in.nextLine();
+                작가등록[wisenum] = in.nextLine();
 
-                System.out.println("명언) " + 명언등록);
-                System.out.println("작가) " + 작가등록);
+                System.out.println("명언) " + 명언등록[wisenum]);
+                System.out.println("작가) " + 작가등록[wisenum]);
 
                 System.out.println(wisenum + "번 명언이 등록되었습니다.");
 
+            } else if (명령어.equals("목록")) {
+                System.out.println("번호 / 작가 / 명언 ");
+                System.out.println("----------------------");
+
+                for (int listnum = 1; listnum <= wisenum; listnum++) {
+                    System.out.println(listnum + " / " + 작가등록[listnum] + " / " + 명언등록[listnum]);
+                }
             }
         }
     }
