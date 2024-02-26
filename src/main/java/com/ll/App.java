@@ -7,6 +7,7 @@ class App {
 
 
     void run() {
+        int wisenum = 0;
         System.out.println("== 명언 앱 ==");
         while (true) {
             System.out.print("명령) ");
@@ -15,6 +16,7 @@ class App {
             if (명령어.equals("종료")) {
                 break;
             } else if (명령어.equals("등록")) {
+                wisenum++;
 
                 System.out.print("명언 : ");
                 String 명언등록 = in.nextLine();
@@ -24,7 +26,8 @@ class App {
                 System.out.println("명언) " + 명언등록);
                 System.out.println("작가) " + 작가등록);
 
-                System.out.println("1번 명언이 등록되었습니다.");
+                System.out.println(wisenum + "번 명언이 등록되었습니다.");
+
             }
         }
     }
