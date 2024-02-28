@@ -7,10 +7,9 @@ import java.util.Scanner;
 class App {
     Scanner in;
     int wisenum;
+    int Deleteid = 0;
     List<Wisesaying> wisesayings;
-    int idToRemove;
-    String contentToRemove;
-    String authorNameToRemove;
+
 
     App() {
         in = new Scanner(System.in);
@@ -34,13 +33,9 @@ class App {
 
             } else if (명령어.equals("목록")) {
                 actionList();
-            } else if (명령어.equals("삭제?id=")) {
-                int deleteid = in.nextInt();
 
-                if (deleteid == 1) {
-
-
-                }
+            } else if (명령어.equals("삭제")) {
+                actionDelete();
 
             }
 
@@ -75,6 +70,22 @@ class App {
         for (int i = wisesayings.size() - 1; i >= 0; i--) {
             Wisesaying wisesaying = wisesayings.get(i);
             System.out.printf("%d / %s / %s\n", wisesaying.id, wisesaying.content, wisesaying.authorName);
+        }
+    }
+
+    void actionDelete() {
+        System.out.println("삭제할 명언의 ID를 입력하세요 : ");
+        int deleteId = in.nextInt();
+
+
+
+        for (int i = 0; i < wisesayings.size(); i++) {
+            Wisesaying wisesaying = wisesayings.get(i); //이 부분에서 i에 해당하는 위치에 있는 Wisesaying 객체를 가져와서 wisesaying이라는 변수에 할당하는 것
+            if (wisesaying.id == deleteId) { //여기서 변수에 할당됐을때 입력받은 deleteId와 i에 해당하는 위치에서의 wisesaying.id가 동일하면,
+                wisesayings.remove(i);       //그 wisesayings(i)에 해당하는 부분을 전부 삭제한다.
+                System.out.println(wisesaying.id + "번 명언이 삭제되었습니다.");
+
+            }
         }
     }
 }
